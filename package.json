@@ -1,7 +1,6 @@
 {
     "name": "private-chat",
     "version": "1.0.0",
-    "description": "A private real-time chat for two users without login",
     "main": "server.js",
     "scripts": {
       "start": "node server.js"
