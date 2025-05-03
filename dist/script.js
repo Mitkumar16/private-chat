@@ -3,12 +3,8 @@ const form = document.getElementById('chat-form');
 const input = document.getElementById('message-input');
 const messages = document.getElementById('messages');
 
-let messageCount = 0;
-
-// Request notification permission on load
-if (Notification.permission !== 'granted') {
-  Notification.requestPermission();
-}
+// Load sound
+const notificationSound = new Audio('https://www.zedge.net/ringtones/7372fbdf-f7e2-4444-aa66-7ab6b01cccdd');
 
 form.addEventListener('submit', function (e) {
   e.preventDefault();
@@ -24,13 +20,8 @@ form.addEventListener('submit', function (e) {
     socket.emit('chat message', text);
     input.value = '';
 
-    messageCount++;
-    if (messageCount === 1 && Notification.permission === 'granted') {
-      new Notification('✅ Message Sent', {
-        body: 'Your first message was successfully sent!',
-        icon: 'https://cdn-icons-png.flaticon.com/512/2099/2099058.png'
-      });
-    }
+    // Play sound for sent message
+    notificationSound.play();
   }
 });
 
@@ -40,4 +31,7 @@ socket.on('chat message', function (msg) {
   newMsg.classList.add('friend-message');
   messages.appendChild(newMsg);
   messages.scrollTop = messages.scrollHeight;
+
+  // Play sound for received message
+  notificationSound.play();
 });
