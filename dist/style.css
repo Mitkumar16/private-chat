@@ -1,57 +1,185 @@
-body {
+/* Reset default styles */
+* {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f0f2f5;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #f3f4f7;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  margin: 0;
 }
 
 .chat-container {
-  background: white;
-  width: 400px;
+  background: linear-gradient(135deg, #00b894, #55efc4);
+  width: 100%;
+  max-width: 450px;
+  height: 100%;
   max-height: 600px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .messages {
   flex: 1;
-  padding: 15px;
+  padding: 20px;
   overflow-y: auto;
+  background: white;
+  border-bottom: 2px solid #ddd;
+  font-size: 16px;
+  line-height: 1.5;
 }
 
 #chat-form {
   display: flex;
-  border-top: 1px solid #ccc;
+  padding: 10px;
+  background: #ffffff;
+  border-top: 2px solid #ddd;
 }
 
 #message-input {
   flex: 1;
-  padding: 10px;
-  border: none;
-  font-size: 16px;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 25px;
+  font-size: 14px;
+  outline: none;
+  transition: 0.3s ease;
+}
+
+#message-input:focus {
+  border-color: #00b894;
 }
 
 #chat-form button {
-  padding: 10px;
-  background: green;
+  padding: 12px 20px;
+  background: #00b894;
   color: white;
   border: none;
+  border-radius: 25px;
+  font-size: 14px;
   cursor: pointer;
+  transition: 0.3s ease;
+  margin-left: 10px;
 }
 
+#chat-form button:hover {
+  background: #55efc4;
+}
+
+/* Style for messages */
 .my-message {
   text-align: right;
-  color: blue;
-  margin-bottom: 5px;
+  color: #2d3436;
+  background: #dfe6e9;
+  padding: 8px 15px;
+  border-radius: 10px;
+  margin: 10px 0;
+  max-width: 70%;
+  display: inline-block;
+  word-wrap: break-word;
 }
 
 .friend-message {
   text-align: left;
-  color: green;
-  margin-bottom: 5px;
+  color: #ffffff;
+  background: #0984e3;
+  padding: 8px 15px;
+  border-radius: 10px;
+  margin: 10px 0;
+  max-width: 70%;
+  display: inline-block;
+  word-wrap: break-word;
+}
+
+/* Mobile Devices (Small screens) */
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+  
+  .chat-container {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+  }
+  
+  #message-input {
+    font-size: 14px;
+  }
+  
+  #chat-form button {
+    font-size: 14px;
+  }
+  
+  .messages {
+    padding: 15px;
+    font-size: 14px;
+  }
+  
+  .my-message, .friend-message {
+    max-width: 90%;
+    padding: 8px 12px;
+  }
+}
+
+/* Tablet Devices (Medium screens) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .chat-container {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+  }
+  
+  #message-input {
+    font-size: 16px;
+  }
+  
+  #chat-form button {
+    font-size: 16px;
+  }
+  
+  .messages {
+    padding: 20px;
+    font-size: 15px;
+  }
+  
+  .my-message, .friend-message {
+    max-width: 85%;
+    padding: 8px 15px;
+  }
+}
+
+/* Desktop Devices (Large screens) */
+@media (min-width: 769px) {
+  .chat-container {
+    width: 400px;
+    height: 550px;
+  }
+  
+  #message-input {
+    font-size: 16px;
+  }
+  
+  #chat-form button {
+    font-size: 16px;
+  }
+  
+  .messages {
+    padding: 20px;
+    font-size: 16px;
+  }
+  
+  .my-message, .friend-message {
+    max-width: 70%;
+    padding: 10px 15px;
+  }
 }
